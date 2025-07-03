@@ -1,0 +1,23 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Registro - Proyecto Fantasma</title>
+  <link rel="stylesheet" href="{% static 'main/css/style.css' %}">
+</head>
+<body class="login-body">
+  <div class="login-container">
+    <h1>Proyecto Fantasma</h1>
+    <h2>Regístrate</h2>
+<form method="post" action="{% url 'register' %}">
+  {% csrf_token %}
+  {{ form.as_p }}
+  <button type="submit" class="login-button">Registrarse</button>
+</form>
+    <p class="info-text">
+      ¿Ya tienes cuenta? <a href="{% url 'login' %}">Inicia sesión aquí</a>.
+    </p>
+  </div>
+</body>
+</html>

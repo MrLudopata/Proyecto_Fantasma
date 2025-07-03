@@ -1,0 +1,28 @@
+<!-- templates/main/login.html -->
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Proyecto Fantasma - Iniciar Sesión</title>
+  <link rel="stylesheet" href="{% static 'main/css/style.css' %}">
+</head>
+<body class="login-body">
+  <div class="login-container">
+    <h1>Proyecto Fantasma</h1>
+    <h2>Inicia sesión</h2>
+
+    <form method="post">
+      {% csrf_token %}
+      {{ form.as_p }}
+      <button type="submit" class="login-button">Entrar</button>
+    </form>
+<p class="info-text">
+  ¿No tienes cuenta? <a href="{% url 'register' %}">Regístrate aquí</a>.
+</p>
+    {% if form.errors %}
+      <p class="error-msg">Usuario o contraseña incorrectos.</p>
+    {% endif %}
+  </div>
+</body>
+</html>

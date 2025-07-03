@@ -1,0 +1,47 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Proyecto Fantasma - Inicio</title>
+  <link rel="stylesheet" href="{% static 'main/css/style.css' %}">
+</head>
+<body class="home-body">
+  <div class="home-container">
+    <h1>Bienvenido al Proyecto Fantasma</h1>
+    <p class="home-description">
+      En el corazón de la oscuridad, donde los susurros se confunden con el viento y cada sombra esconde un secreto,
+      nace el <strong>Proyecto Fantasma</strong>. Aquí, los límites entre lo real y lo desconocido se desdibujan,
+      invitándote a explorar lo que pocos se atreven siquiera a imaginar.<br><br>
+
+      Cada rincón de este dominio encierra ecos de historias no contadas, apariciones fugaces y misterios que esperan
+      ser revelados. Atrévete a invocar lo oculto, a mirar directamente a los ojos de aquello que se oculta
+      tras el velo de la realidad.<br><br>
+
+      Da el primer paso, deja que tu curiosidad te consuma y permite que el fantasma se manifieste.
+      No temas... o tal vez sí.
+    </p>
+
+    <!-- Botón para invocar al fantasma -->
+    <button id="show-ghost" class="ghost-button">Invocar Fantasma 👻</button>
+
+    <!-- Contenedor del fantasma oculto inicialmente -->
+    <div id="ghost-container" class="ghost-container">
+      <img src="{% static 'images/fantasma.webp' %}" alt="Fantasma" class="ghost-img">
+    </div>
+
+    <!-- Botón cerrar sesión -->
+    <form method="post" action="{% url 'logout' %}">
+      {% csrf_token %}
+      <button type="submit" class="logout-button">Cerrar Sesión</button>
+    </form>
+  </div>
+
+  <script>
+    document.getElementById('show-ghost').addEventListener('click', function() {
+      const ghostContainer = document.getElementById('ghost-container');
+      ghostContainer.classList.add('fade-in'); // agrega la clase de animación
+    });
+  </script>
+</body>
+</html>
